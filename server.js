@@ -17,7 +17,6 @@ if (!process.env.DISABLE_XORIGIN) {
     const origin = req.headers.origin || "*";
     if (!process.env.XORIG_RESTRICT || allowedOrigins.indexOf(origin) > -1) {
       console.log(origin);
-      console.log("origin");
 
       res.setHeader("Access-Control-Allow-Origin", origin);
       res.header(
@@ -32,6 +31,7 @@ if (!process.env.DISABLE_XORIGIN) {
 const port = process.env.PORT || 3000;
 bGround.setupBackgroundApp(app, myApp, __dirname).listen(port, () => {
   bGround.log(`Node is listening on port ${port}...`);
+  bGround.log("Hello World");
 });
 
 /******************************************************
