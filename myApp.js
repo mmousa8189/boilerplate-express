@@ -25,6 +25,18 @@ app.get("/", function(req, res) {
 app.get("/json", (req, res) => {
 	res.json({message: "Hello json"});
 });
+
+const reqTimeMiddleware = (req, res, next) => {
+  req.time = new Date().toString();
+  next();
+};
+
+app.get("/now", reqTimeMiddleware, (req, res) => {
+  res.send({
+    time: req.time
+  });
+});
+
 // app.get("/json", (req, res) => {
 //   let message = "Hello json";
 //   console.log(process.env.MESSAGE_STYLE);
